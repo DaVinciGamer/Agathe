@@ -5,28 +5,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 2.0f; // Adjusted move speed
+    public float moveSpeed = 2.0f;
     public InputAction LeftAction;
     public InputAction RightAction;
     public InputAction UpAction;
     public InputAction DownAction;
+    public InputAction SneakAction;
+    public InputAction ShootAction;
 
-    // Start is called before the first frame update
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
+    public float projectileSpeed = 10.0f;
+
     void Start()
     {
         LeftAction.Enable();
         RightAction.Enable();
         UpAction.Enable();
         DownAction.Enable();
+        SneakAction.Enable();
+        ShootAction.Enable();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Initialize the movement vector
         Vector2 move = Vector2.zero;
 
-        // Determine the movement direction based on input
         if (LeftAction.IsPressed())
         {
             move.x = -1f;
@@ -45,13 +49,34 @@ public class PlayerController : MonoBehaviour
             move.y = -1f;
         }
 
-        // Normalize the movement vector to prevent faster diagonal movement
         if (move != Vector2.zero)
         {
             move.Normalize();
         }
 
-        // Apply the movement to the position with Time.deltaTime to ensure frame-rate independent movement
-        transform.position += (Vector3)move * moveSpeed * Time.deltaTime;
+        float currentSpeed = moveSpeed;
+        if (SneakAction.IsPressed())
+        {
+            currentSpeed *= 0.5f;
+        }
+
+        transform.position += (Vector3)move * currentSpeed * Time.deltaTime;
+
+        if (ShootAction.triggered)
+        {
+            ShootProjectile();
+        }
+    }
+
+    void ShootProjectile()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        mousePosition.z = 0f;
+
+        Vector3 direction = (mousePosition - projectileSpawnPoint.position).normalized;
+
+        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        rb.velocity = direction * projectileSpeed;
     }
 }

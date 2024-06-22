@@ -200,6 +200,27 @@ MonoBehaviour:
       m_Action: Down
       m_Flags: 0
     m_Flags: 0
+  SneakAction:
+    m_Name: Sneak
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3449e29f-200f-4513-8acd-5fe798720496
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  ShootAction:
+    m_Name: Shoot
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: dabeede4-cad8-4b26-b926-2f477a83c9bd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
+  projectileSpeed: 10
 --- !u!50 &563033927899849335
 Rigidbody2D:
   serializedVersion: 4
