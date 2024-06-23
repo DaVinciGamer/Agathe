@@ -6,6 +6,8 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float health, maxHealth = 3f;
     [SerializeField] HealthBar healthBar;
+
+    [SerializeField] PlayerController playerController;
     Rigidbody2D rb;
 
     private void Awake()
@@ -16,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
+        playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         health = maxHealth;
         healthBar.UpdateHealthBar(health, maxHealth);
     }
@@ -32,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        playerController.updateScore(1);
         Destroy(gameObject);
     }
 }

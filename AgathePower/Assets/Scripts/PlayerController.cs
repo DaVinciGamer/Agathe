@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 10.0f;
+    public int score = 0;
+
+    public TMP_Text scoreText;
 
     void Start()
     {
@@ -25,6 +29,8 @@ public class PlayerController : MonoBehaviour
         DownAction.Enable();
         SneakAction.Enable();
         ShootAction.Enable();
+
+        scoreText.text = "Score: " + score.ToString();
     }
 
     void Update()
@@ -78,5 +84,10 @@ public class PlayerController : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.velocity = direction * projectileSpeed;
+    }
+
+    public void updateScore(int points){
+        score = score + points;
+        scoreText.text = "Score: " + score.ToString();
     }
 }
