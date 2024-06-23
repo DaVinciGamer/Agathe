@@ -1,4 +1,5 @@
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 10.0f;
     public int score = 0;
+    public int currentHealth = 100;
+    public int maxHealth = 100;
+    public Image healthBar;
 
     public TMP_Text scoreText;
 
@@ -89,5 +93,13 @@ public class PlayerController : MonoBehaviour
     public void updateScore(int points){
         score = score + points;
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void updateHealth(int healthPoints){
+        currentHealth = currentHealth + healthPoints;
+        healthBar.fillAmount = currentHealth / maxHealth;
+        if(currentHealth == 0){
+            //show Death screen
+        }
     }
 }
