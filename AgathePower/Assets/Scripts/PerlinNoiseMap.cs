@@ -17,12 +17,12 @@ public class PerlinNoiseMap : MonoBehaviour
     List<List<int>> noise_grid = new List<List<int>>();
     List<List<GameObject>> tile_grid = new List<List<GameObject>>();
 
-    float magnification = 10.0f; //ändert die flächen größen je größer die Zahl
+    float magnification = 15.0f; //ändert die flächen größen je größer die Zahl
                                  //desto breiter die Flächen je kleiner desto mehr
                                  //"Inseln" haben wir
 
-    int x_offset = -15; // - bewegt tile links + bewegt tile rechts
-    int y_offset = 5;// - bewegt tile runter + bewegt tile hoch
+    int x_offset = 20; // - bewegt tile links + bewegt tile rechts
+    int y_offset = -10;// - bewegt tile runter + bewegt tile hoch
     void Start()
     {
         CreateTileset();
