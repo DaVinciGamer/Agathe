@@ -288,9 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3878c68e718d55642abaafe34da1acc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab_grass: {fileID: 6108924462634682386, guid: fd7f2e552f7c0414aa95d7ef14f76089, type: 3}
-  prefab_gravel: {fileID: 7392182687565581683, guid: d23c4bd170de4184498b2cca44e89981, type: 3}
-  prefab_terrace: {fileID: 3761657844338021066, guid: b1b1d33233e138545bc348fd85b3e069, type: 3}
+  prefab_grass: {fileID: 338485958917339205, guid: 6faae9c6cc94a7f41b51cd4746f392f8, type: 3}
+  prefab_gravel: {fileID: 6264958101741066882, guid: abce04b9b7160fe49a61e4d136daee02, type: 3}
+  prefab_terrace: {fileID: 8284805721674086015, guid: d1affba1ba1ba344b918ff6240274f27, type: 3}
 --- !u!4 &1469300387
 Transform:
   m_ObjectHideFlags: 0
